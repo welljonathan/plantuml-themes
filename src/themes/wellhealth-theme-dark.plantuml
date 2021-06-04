@@ -1,0 +1,494 @@
+''
+'' superhero theme based off of the bootstrap theme of the same name
+'' https://bootswatch.com/minty/
+''
+'' Author = "Brett Schwarz
+'' Copyright (c) 2020 by Brett Schwarz
+
+!$THEME = "WELL Health"
+
+
+
+
+!$LIGHTGREEN = "#33D7DD"
+!$GREEN = "#00A4AA"
+!$DARKGREEN = "#007177"
+
+'original
+!$LIGHTPURPLE = "#C451EC"
+'original
+!$PURPLE = "#9B47B8"
+!$DARKPURPLE = "#681485"
+
+'original
+!$LIGHTORANGE = "#ffab40"
+'original
+!$ORANGE = "#f59049"
+!$DARKORANGE = "#C25D16"
+
+!$LIGHTBLACK = "#626D81"
+'original
+!$BLACK = "#2F3A4E"
+!$DARKBLACK = "#00071B"
+
+'original
+!$LIGHTGREY = "#ECF0F9"
+!$GREY = "#899DC2"
+'original
+!$DARKGREY = "#566A8F"
+
+'original
+!$LIGHTTEAL = "#30D2D8" 
+!$TEAL = "#009FA5"
+!$DARKTEAL = "#006C72"
+
+
+'original
+!$LIGHTBLUE = "#6699FF"
+'original
+!$BLUE = "#346EDF"
+!$DARKBLUE = "#013BAC"
+
+!$REPLACE = "YellowGreen"
+
+!if %not(%variable_exists("$BGCOLOR"))
+!$BGCOLOR = $DARKGREY
+!endif
+
+skinparam backgroundColor $BGCOLOR
+skinparam useBetaStyle false
+
+''
+'' Colors taken from the css file of the BS theme
+''
+' !$BLUE = $REPLACE
+!$INDIGO = $REPLACE
+' !$PURPLE = $REPLACE
+!$PINK = $REPLACE
+!$RED = $REPLACE
+' !$ORANGE = $REPLACE
+!$YELLOW = $REPLACE
+' !$GREEN = $REPLACE
+' !$TEAL = $REPLACE
+!$CYAN = $REPLACE
+!$WHITE = $LIGHTGREY
+!$LIGHT = $LIGHTGREEN
+
+'' *_DARK = tint (lighter) of the main color of 80%
+''          where TINT is calculated by clr + (255-clr) * tint_factor
+'' *_LIGHT = shade (darker) of the main color of 80%
+''          and SHADE is calculated by clr * (1 - shade_factor)
+''
+!$FGCOLOR = $BLACK
+!$PRIMARY = $BLUE
+!$PRIMARY_DARK = $DARKBLUE
+!$PRIMARY = $BLUE
+!$PRIMARY_DARK = $GREEN
+!$PRIMARY_LIGHT = $DARKBLUE
+!$PRIMARY_TEXT = $LIGHTGREEN
+!$SECONDARY = $GREEN
+!$SECONDARY_DARK = $GREEN
+!$SECONDARY_LIGHT = $DARKGREEN
+!$SECONDARY_TEXT = $LIGHTGREEN
+!$INFO = $PURPLE
+!$INFO_DARK = $DARKPURPLE
+!$INFO_LIGHT = $LIGHTPURPLE
+!$INFO_TEXT = $WHITE
+!$INFO_TEXT = $LIGHTGREEN
+!$SUCCESS = $PURPLE
+!$SUCCESS_DARK = $DARKPURPLE
+!$SUCCESS_LIGHT = $LIGHTPURPLE
+!$SUCCESS_TEXT = $WHITE
+!$WARNING = $ORANGE
+!$WARNING_DARK = $DARKORANGE
+!$WARNING_LIGHT = $LIGHTORANGE
+!$WARNING_TEXT = $BLACK
+!$DANGER = $TEAL
+!$DANGER_DARK = $DARKGREY
+!$DANGER_LIGHT = $LIGHTGREY
+!$DANGER_TEXT = $WHITE
+!$DARK = $BLACK
+!$DARK_DARK = $DARKBLACK
+!$DARK_LIGHT = $LIGHTBLACK
+!$LIGHT_DARK = $REPLACE
+!$LIGHT_LIGHT = $REPLACE
+
+!procedure $success($msg)
+  <font color=$SUCCESS><b>$msg
+!endprocedure
+
+!procedure $failure($msg)
+  <font color=$DANGER><b>$msg
+!endprocedure
+
+!procedure $warning($msg)
+  <font color=$WARNING><b>$msg
+!endprocedure
+
+!procedure $primary_scheme()
+	FontColor $PRIMARY_TEXT
+	BorderColor $PRIMARY_DARK
+	BackgroundColor $PRIMARY_LIGHT
+!endprocedure
+
+!procedure $info_scheme()
+	FontColor $INFO_TEXT
+	BorderColor $INFO
+	BackgroundColor $INFO_DARK
+!endprocedure
+
+''
+'' Global Default Values
+''
+skinparam defaultFontName       "Verdana"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           8
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            $DARK
+skinparam ArrowFontColor            $LIGHT
+skinparam ArrowFontColor $LIGHT
+skinparam stereotype {
+    CBackgroundColor $SECONDARY_LIGHT
+    CBorderColor $SECONDARY_DARK
+    ABackgroundColor $SUCCESS_LIGHT
+    ABorderColor $SUCCESS_DARK
+    IBackgroundColor $DANGER_LIGHT
+    IBorderColor $DANGER_DARK
+    EBackgroundColor $WARNING_LIGHT
+    EBorderColor $WARNING_DARK
+    NBackgroundColor $INFO_LIGHT
+    NBorderColor $INFO_DARK
+}
+skinparam title {
+	FontColor	                 $PRIMARY_LIGHT
+	BorderColor	                 $SECONDARY_DARK
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              $SECONDARY_DARK-$SECONDARY_LIGHT
+}
+
+skinparam legend {
+	BackgroundColor $SECONDARY
+	BorderColor $SECONDARY_DARK
+	FontColor $LIGHT
+}
+
+!startsub swimlane
+skinparam swimlane {
+	BorderColor $INFO
+	BorderThickness 2
+	TitleBackgroundColor  $SECONDARY_LIGHT-$SECONDARY_DARK
+	TitleFontColor $PRIMARY
+}
+!endsub
+
+!startsub activity
+
+skinparam activity {
+	$primary_scheme()
+	BarColor $SUCCESS_DARK
+	StartColor $INFO_DARK
+	EndColor $INFO_DARK
+	''
+	DiamondBackgroundColor $SECONDARY_LIGHT
+  	DiamondBorderColor $SECONDARY_DARK
+  	DiamondFontColor $SECONDARY_TEXT
+}
+!endsub
+
+!startsub participant
+
+skinparam participant {
+	$primary_scheme()
+	ParticipantBorderThickness 2
+}
+!endsub
+
+!startsub actor
+
+skinparam actor {
+	$primary_scheme()
+}
+!endsub
+
+' !startsub arrow
+
+' skinparam arrow 
+' 	Thickness 3
+' 	Color $PRIMARY
+' 	FontColor "Brown"
+' }
+' !endsub
+
+!startsub sequence
+
+skinparam sequence {
+	BorderColor $PRIMARY
+	' For some reason sequence title font color does not pick up from global
+	TitleFontColor $PRIMARY
+	BackgroundColor $BGCOLOR
+	StartColor $PRIMARY
+	EndColor $PRIMARY
+	''
+	BoxBackgroundColor $BGCOLOR
+	BoxBorderColor $DARK
+	BoxFontColor $DARk
+	''
+	LifeLineBorderColor $SECONDARY
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor $SECONDARY_DARK
+	''
+	GroupBorderColor $DARK
+	GroupFontColor $DARK
+	GroupHeaderFontColor $INFO
+	GroupBackgroundColor $SECONDARY
+	GroupHeaderBackgroundColor $BGCOLOR
+	''
+	DividerBackgroundColor $DARK
+    DividerBorderColor $DARK
+    DividerBorderThickness 2
+    DividerFontColor $LIGHT
+	''
+	ReferenceBackgroundColor $BGCOLOR
+	ReferenceBorderColor $LIGHT
+	ReferenceFontColor $LIGHT
+	ReferenceHeaderFontColor $INFO
+	ReferenceHeaderBackgroundColor $SECONDARY
+}
+!endsub
+
+!startsub partition
+
+skinparam partition {
+	BorderColor $LIGHTTEAL
+	FontColor $LIGHTTEAL
+	BackgroundColor $DARKTEAL
+}
+!endsub
+
+!startsub collections
+
+skinparam collections {
+	$primary_scheme()
+}
+!endsub
+
+!startsub control
+
+skinparam control {
+	$primary_scheme()
+}
+!endsub
+
+!startsub entity
+
+skinparam entity {
+	$primary_scheme()
+}
+!endsub
+
+!startsub boundary
+
+skinparam boundary {
+	$primary_scheme()
+}
+!endsub
+
+!startsub agent
+
+skinparam agent {
+	BackgroundColor $WARNING
+	BorderColor $WARNING_LIGHT
+	FontColor $DARK
+}
+!endsub
+
+!startsub note
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor $INFO
+	BorderColor $INFO_DARK
+	FontColor $WHITE
+}
+!endsub
+
+!startsub artifact
+
+skinparam artifact {
+	BackgroundColor $DARK
+	BorderColor $DARK_DARK
+	FontColor $LIGHT
+}
+!endsub
+
+!startsub component
+
+skinparam component {
+	$primary_scheme()
+}
+!endsub
+
+!startsub interface
+
+skinparam interface {
+	BackgroundColor  $DANGER_DARK
+	BorderColor  $DANGER
+	FontColor $LIGHT
+}
+!endsub
+
+!startsub storage
+
+skinparam storage {
+	BackgroundColor $WARNING
+  BorderColor $WARNING_DARK
+	FontColor $WARNING_TEXT
+}
+!endsub
+
+!startsub node
+
+skinparam node {
+	BackgroundColor  $SECONDARY
+	BorderColor $LIGHT
+	FontColor $LIGHT
+}
+!endsub
+
+!startsub cloud
+
+skinparam cloud {
+	BackgroundColor $LIGHTTEAL-$TEAL
+	BorderColor $DARKTEAL
+	FontColor $DARK
+}
+!endsub
+
+!startsub database
+
+skinparam database {
+	$info_scheme()
+}
+!endsub
+
+!startsub class
+
+skinparam class {
+	$primary_scheme()
+	HeaderBackgroundColor $PRIMARY_LIGHT
+	StereotypeFontColor $DARK
+	StereotypeFontColor $LIGHTGREEN
+	BorderThickness 1
+	AttributeFontColor $LIGHTGREEN
+	AttributeFontSize 11
+}
+!endsub
+
+!startsub object
+
+skinparam object {
+	$primary_scheme()
+	StereotypeFontColor $DARK
+	BorderThickness 1
+	AttributeFontColor $SECONDARY_TEXT
+	AttributeFontSize 11
+}
+!endsub
+
+!startsub usecase
+
+skinparam usecase {
+	$primary_scheme()
+	BorderThickness 2
+	StereotypeFontColor $PRIMARY
+}
+!endsub
+
+!startsub rectangle
+
+skinparam rectangle {
+	$primary_scheme()
+	BackgroundColor $SECONDARY_LIGHT
+	BorderThickness 2
+	StereotypeFontColor $PRIMARY
+}
+!endsub
+
+!startsub package
+
+skinparam package {
+	BackgroundColor $SECONDARY
+  	BorderColor $PRIMARY
+	FontColor $PRIMARY
+	BorderThickness 2
+}
+!endsub
+
+!startsub folder
+
+skinparam folder {
+	BackgroundColor $SECONDARY_LIGHT
+  	BorderColor $WARNING_LIGHT
+	FontColor $WARNING_LIGHT
+	BorderThickness 2
+}
+!endsub
+
+!startsub frame
+
+skinparam frame {
+	BackgroundColor $SECONDARY_LIGHT
+  	BorderColor $INFO_DARK
+	FontColor $INFO_DARK
+	BorderThickness 2
+}
+!endsub
+
+!startsub state
+
+skinparam state {
+	$primary_scheme()
+	StartColor $INFO
+	EndColor $INFO
+	AttributeFontColor $SECONDARY_TEXT
+	AttributeFontSize 11
+}
+!endsub
+
+!startsub queue
+
+skinparam queue {
+	$info_scheme()
+}
+!endsub
+
+!startsub card
+
+skinparam card {
+	BackgroundColor $INFO
+	BorderColor $INFO_DARK
+	FontColor $INFO_TEXT
+}
+!endsub
+
+!startsub file
+
+skinparam file {
+	BackgroundColor $SECONDARY_DARK
+	BorderColor $LIGHT
+	FontColor $DARKBLUE
+}
+!endsub
+
+!startsub stack
+
+skinparam stack {
+	$primary_scheme()
+}
+!endsub

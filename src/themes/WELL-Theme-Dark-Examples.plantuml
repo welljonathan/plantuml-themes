@@ -1,0 +1,447 @@
+@startuml "Activity Diagram"
+!include ./wellhealth-theme-dark.plantuml
+!if %variable_exists("$THEME")
+title Activity Diagram - $THEME theme
+!else
+title Activity Diagram
+!endif
+
+start
+ :start;
+ fork
+  partition "My Partition" {
+   :foo1;
+   :foo2;
+  }
+ fork again
+   :foo3;
+   detach
+ endfork
+ if (foo4) then
+   :foo5;
+   detach
+ endif
+ :foo6;
+ detach
+ :foo7;
+ stop
+@enduml
+
+
+@startuml "Class Diagram"
+!include ./wellhealth-theme-dark.plantuml
+!if %variable_exists("$THEME")
+title Class Diagram - $THEME theme
+!else
+title Class Diagram
+!endif
+
+'skinparam BackgroundColor transparent
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+  Object[] elementData
+  size()
+}
+
+enum TimeUnit {
+  DAYS
+  HOURS
+  MINUTES
+}
+
+annotation SuppressWarnings
+
+@enduml
+
+
+
+
+
+@startuml "Component Diagram"
+!include ./wellhealth-theme-dark.plantuml
+
+!if %variable_exists("$THEME")
+title Component Diagram - $THEME theme
+!else
+title Component Diagram
+!endif
+
+'skinparam BackgroundColor transparent
+
+package "My Package" {
+  HTTP - [First Component]
+  [Another Component]
+  rectangle MyRectangle1
+  collections MyCollection1
+}
+ 
+node "My Node" {
+  FTP - [Second Component]
+  [First Component] --> FTP
+  rectangle MyRectangle2
+} 
+
+cloud "My Cloud" {
+  [Example 1]
+}
+
+collections MyCollection2
+
+database "My Database" {
+  folder "My folder" {
+	[Folder 3]
+  }
+  frame "My Frame" {
+	[Frame 4]
+  }
+}
+
+artifact "My Artifact"
+storage "My Storage"
+queue "My Queue"
+interface "My Interface"
+card "My Card"
+file "My File"
+stack "My Stack"
+rectangle "Another rectangle"
+
+[Another Component] --> [Example 1]
+[Example 1] --> [Folder 3]
+[Folder 3] --> [Frame 4]
+
+@enduml
+
+
+
+
+
+
+
+
+@startmindmap "Mindmap Diagram"
+!include ./wellhealth-theme-dark.plantuml
+!if %variable_exists("$THEME")
+title Mindmap Diagram - $THEME theme
+!else
+title Mindmap Diagram
+!endif
+
+!DIAGRAM = "mindmap"
+
++ OS
+++ Ubuntu
++++ Linux Mint
++++ Kubuntu
++++ Lubuntu
++++ KDE Neon
+++ LMDE
+++ SolydXK
+++ SteamOS
+++ Raspbian
+-- Windows 95
+-- Windows 98
+-- Windows NT
+--- Windows 8
+--- Windows 10
+
+@endmindmap
+
+
+@startuml "skinparams"
+help skinparams
+@enduml
+
+
+@startuml "Object Diagram"
+!include ./wellhealth-theme-dark.plantuml
+
+!if %variable_exists("$THEME")
+title Object Diagram - $THEME theme
+!else
+title Object Diagram
+!endif
+
+object Object01
+object Object02
+object Object03
+object Object04
+object Object05
+object Object06
+object Object07
+object Object08
+Object08 : name = "Dummy"
+Object08 : id = 123
+
+Object01 <|-- Object02
+Object03 *-- Object04
+Object05 o-- "4" Object06
+Object07 .. Object08 : some labels
+
+@enduml
+
+
+
+
+@startuml "Sequence Diagram"
+!include ./wellhealth-theme-dark.plantuml
+
+!if %variable_exists("$THEME")
+title Sequence Diagram - $THEME theme
+!else
+title Sequence Diagram
+!endif
+
+'skinparam BackgroundColor transparent
+skinparam responseMessageBelowArrow true
+
+autonumber "<b>[000]"
+
+header Page Header
+footer Page %page% of %lastpage%
+
+actor Foo1
+boundary Foo2
+control Foo3
+entity Foo4
+database Foo5
+collections Foo6
+participant Bob
+participant Alice << (C,#ADD1B2) Testable >>
+
+box "Internal Service"
+	participant Bob
+	participant Alice
+end box
+
+== Initialization ==
+Foo1 -> Foo2 : To boundary
+|||
+Foo2 -> Foo3 ++: To control
+ref over Foo4, Foo5
+  This can be on
+  several lines
+end ref
+Foo3 -> Foo4 : To entity
+
+Foo4 -> Foo5 : To database
+Foo5 --> Foo3 -- : return
+Foo3 --> Foo2 --: return
+... Some ~~long delay~~ ...
+Foo1 -> Foo6 : To collections
+Foo6 --> Foo4: $success("success")
+
+
+group alt [successful case]
+
+Foo1 -> Alice: Authentication Accepted
+Alice --> Foo1: success
+
+note left of Alice: this is a first note
+
+else some kind of failure
+
+	Foo1 -> Alice: Authentication Failure
+    Alice --> Foo1: $failure("Bad request")
+	group My own label
+	    loop 1000 times
+	        Alice -> Foo1: DNS Attack
+	    end
+	end
+	
+else Just a Warning
+
+   Foo1 -> Alice: $warning("Please repeat")
+   
+end
+
+note over Foo1, Foo2
+this is a second note
+that is really
+long
+end note
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+@startuml "State Diagram"
+' !include ./wellhealth-theme-dark.plantuml
+
+!if %variable_exists("$THEME")
+title State Diagram - $THEME theme
+!else
+title State Diagram
+!endif
+
+'skinparam BackgroundColor transparent
+
+state fork_state <<fork>>
+[*] --> fork_state
+fork_state --> State2
+fork_state --> State3
+
+state join_state <<join>>
+State2 --> join_state
+State3 --> join_state
+join_state --> State4
+State4 --> Active
+
+state Active {
+  [*] -> NumLockOff
+  NumLockOff --> NumLockOn : EvNumLockPressed
+  NumLockOn --> NumLockOff : EvNumLockPressed
+  --
+  [*] -> CapsLockOff
+  CapsLockOff --> CapsLockOn : EvCapsLockPressed
+  CapsLockOn --> CapsLockOff : EvCapsLockPressed
+  --
+  [*] -> ScrollLockOff
+  ScrollLockOff --> ScrollLockOn : EvCapsLockPressed
+  ScrollLockOn --> ScrollLockOff : EvCapsLockPressed
+}
+
+@enduml
+
+
+
+
+
+
+
+
+@startuml "Swimlane Diagram"
+' !include ./wellhealth-theme-dark.plantuml
+
+!if %variable_exists("$THEME")
+title Swimlane Diagram - $THEME theme
+!else
+title Swimlane Diagram
+!endif
+
+'skinparam BackgroundColor transparent
+
+|First Swimlane|
+start
+    :Do something in First;
+    :Do something else;
+    |Second Swimlane|
+    :Do something in Second;
+        |Third Swimlane|
+        :Do something in Third;
+stop
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@startuml "Usecase Diagram"
+!include ./wellhealth-theme.plantuml
+
+!if %variable_exists("$THEME")
+title Usecase Diagram - $THEME theme
+!else
+title Usecase Diagram
+!endif
+
+legend
+This is my legend
+endlegend
+
+'skinparam BackgroundColor transparent
+
+left to right direction
+actor customer
+actor clerk
+rectangle checkout {
+  customer -- (checkout)
+  (checkout) .> (payment) : include
+  (help) .> (checkout) : extends
+  (checkout) -- clerk
+}
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+@startwbs "Work Breakdown Diagram"
+!$BGCOLOR="White"
+!include ./wellhealth-theme.plantuml
+
+!if %variable_exists("$THEME")
+title Work Breakdown Diagram - $THEME theme
+!else
+title Work Breakdown Diagram
+!endif
+
+!$DIAGRAM = "wbs"
+
++ New Job
+++ Decide on Job Requirements
++++ Identity gaps
++++ Review JDs
+++++ Sign-Up for courses
+++++ Volunteer
+++++ Reading
+++- Checklist
++++- Responsibilities
++++- Location
+++ CV Upload Done
++++ CV Updated
+++++ Spelling & Grammar
+++++ Check dates
+---- Skills
++++ Recruitment sites chosen
+@endwbs
+
+
+
+
+
+
+
+
+
+
+
+
