@@ -247,6 +247,7 @@ skinparam sequence {
 	GroupHeaderFontColor $GREY
 	GroupBackgroundColor $DARKBLUE
 	GroupHeaderBackgroundColor $BGCOLOR
+	GroupBodyBackgroundColor $DARKTEAL
 	''
 	DividerBackgroundColor $DARK
     DividerBorderColor $DARK
