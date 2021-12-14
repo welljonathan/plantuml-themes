@@ -149,8 +149,7 @@ skinparam ParticipantPadding    40
 skinparam BoxPadding            40
 skinparam Padding               5
 skinparam ArrowColor            $DARK
-skinparam ArrowFontColor            $LIGHT
-skinparam ArrowFontColor $LIGHT
+skinparam ArrowFontColor        $LIGHT
 skinparam stereotype {
     CBackgroundColor $SECONDARY_LIGHT
     CBorderColor $SECONDARY_DARK
@@ -239,14 +238,14 @@ skinparam sequence {
 	BoxBorderColor $DARK
 	BoxFontColor $DARk
 	''
-	LifeLineBorderColor $SECONDARY
+	LifeLineBorderColor $GREY
 	LifeLineBorderThickness 2
 	LifeLineBackgroundColor $SECONDARY_DARK
 	''
-	GroupBorderColor $DARK
+	GroupBorderColor $LIGHTBLUE
 	GroupFontColor $DARK
-	GroupHeaderFontColor $INFO
-	GroupBackgroundColor $SECONDARY
+	GroupHeaderFontColor $GREY
+	GroupBackgroundColor $DARKBLUE
 	GroupHeaderBackgroundColor $BGCOLOR
 	''
 	DividerBackgroundColor $DARK
@@ -259,6 +258,18 @@ skinparam sequence {
 	ReferenceFontColor $LIGHT
 	ReferenceHeaderFontColor $INFO
 	ReferenceHeaderBackgroundColor $SECONDARY
+	
+	BackgroundColor $DARKBLUE
+	ArrowFontColor $LIGHTGREY
+	ArrowColor $ORANGE
+	
+	ParticipantFontColor $LIGHTGREY
+	ActorFontColor $LIGHTGREY
+	BoundaryFontColor $LIGHTGREY
+	ControlFontColor $LIGHTGREY
+	DatabaseFontColor $LIGHTGREY
+	CollectionsFontColor $LIGHTGREY
+	QueueFontColor $LIGHTGREY
 }
 !endsub
 
